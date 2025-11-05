@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov  4 19:29:39 2025
-
-@author: zhangluyang
-"""
-
 import numpy as np
 import pandas as pd
 import gzip
