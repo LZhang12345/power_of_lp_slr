@@ -75,4 +75,5 @@ U(0, q) & \text{with probability } 1-r \quad \text{(Bulk)} \\
 U(q, 1) & \text{with probability } r \quad \text{(Extreme Tail)}  
 \end{cases}  
 $$
+
 By manually tuning $q$ and $r$ for highly skewed features, we can over- or under-sample the extreme tails in log-space, providing precise control over the final standard deviation of $X_{\text{synth}}$.
