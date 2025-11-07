@@ -45,20 +45,20 @@ $$X_{\text{synth}} = \exp(Y_{\text{synth}}) - 1$$
 
 Features with frequent zeros (e.g., Revenue) are modeled as a two-part mixture process.
 
-First, we determine if a value is zero using a Bernoulli trial based on the empirical zero probability $p_0$:
-$$b \sim \text{Bernoulli}(p_0), \quad \text{where } p_0 = P(Y=0)$$
-Second, if non-zero, we generate a value using the empirical quantile function $\hat{F}^{-1}_{nz}$ of the non-zero data:
-$$Y_{\text{synth}} = \begin{cases} 0 & \text{if } b = 1 
-\\ \hat{F}_{nz}^{-1}(u) & \text{if } b = 0 \end{cases}$$
+First, we determine if a value is zero using a Bernoulli trial based on the empirical zero probability $p_0$:  
+$$b \sim \text{Bernoulli}(p_0), \quad \text{where } p_0 = P(Y=0)$$  
+Second, if non-zero, we generate a value using the empirical quantile function $\hat{F}^{-1}_{nz}$ of the non-zero data:  
+$$Y_{\text{synth}} = \begin{cases} 0 & \text{if } b = 1   
+\\ \hat{F}_{nz}^{-1}(u) & \text{if } b = 0 \end{cases}$$  
 
 **3. Tuned Stratified Sampling**
 
 Standard inverse transform sampling uses a uniform random variable $u \sim U(0, 1)$. To precisely match the extreme tail variance of the original data, we replace standard uniform sampling with stratified sampling controlled by tuning parameters $q$ (cutoff, e.g., 0.995) and $r$ (tail rate, e.g., 0.005):
 
 $$
-u \sim \begin{cases}
-U(0, q) & \text{with probability } 1-r \quad \text{(Bulk)} \\
-U(q, 1) & \text{with probability } r \quad \text{(Extreme Tail)}
-\end{cases}
+u \sim \begin{cases}  
+U(0, q) & \text{with probability } 1-r \quad \text{(Bulk)} \\  
+U(q, 1) & \text{with probability } r \quad \text{(Extreme Tail)}  
+\end{cases}  
 $$
 By manually tuning $q$ and $r$ for highly skewed features, we can over- or under-sample the extreme tails in log-space, providing precise control over the final standard deviation of $X_{\text{synth}}$.
