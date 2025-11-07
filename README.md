@@ -36,7 +36,7 @@ Both the online and offline pipelines rely on the same core engine to generate i
 
 **1. Log-Space Stabilizing Transformation**
 
-To handle extreme right-skew (where standard deviations are much larger than means), we do not model the raw feature $X$. Instead, we model its log-transformation $Y$, which stabilizes variance and creates a more tractable distribution:
+To handle extreme right-skew (where standard deviations are much larger than means), we do not model the raw feature $X$. Instead, we model its log-transformation $Y$, which stabilizes variance and creates a more tractable distribution:  
 $$Y = \log(1 + X)$$
 After generation, synthetic values are transformed back, ensuring strict non-negativity and restoring the original skew:
 $$X_{\text{synth}} = \exp(Y_{\text{synth}}) - 1$$
