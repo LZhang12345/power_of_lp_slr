@@ -46,12 +46,20 @@ $$X_{\text{synth}} = \exp(Y_{\text{synth}}) - 1$$
 Features with frequent zeros (e.g., Revenue) are modeled as a two-part mixture process.
 
 First, we determine if a value is zero using a Bernoulli trial based on the empirical zero probability $p_0$:  
+
 $$
 b \sim \text{Bernoulli}(p_0), \quad \text{where } p_0 = P(Y=0)
 $$
+
 Second, if non-zero, we generate a value using the empirical quantile function $\hat{F}^{-1}_{nz}$ of the non-zero data:  
-$$Y_{\text{synth}} = \begin{cases} 0 & \text{if } b = 1   
-\\ \hat{F}_{nz}^{-1}(u) & \text{if } b = 0 \end{cases}$$  
+
+$$
+Y_{\text{synth}} =
+\begin{cases}
+0 & \text{if } b = 1 \\
+\hat{F}_{nz}^{-1}(u) & \text{if } b = 0
+\end{cases}
+$$
 
 **3. Tuned Stratified Sampling**
 
