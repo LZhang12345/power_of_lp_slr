@@ -1,0 +1,1 @@
+The primary motivation for this synthetic data generator is to create a high-fidelity, privacy-preserving dataset that enables public, reproducible research. Our original data is proprietary and cannot be shared, but our analysis and re-ranking algorithms
